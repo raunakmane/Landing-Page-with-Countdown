@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="landing">
+        <div class="landing-inner">
+          <img src="https://image.ibb.co/f4vhyS/logo.png" />
+          <p>A social network for developers</p>
+          <h1>Coming Soon</h1>
+          <div id="countdown"></div>
+        </div>
+      </section>
+    
+
+
+      <script>
+         window.onload = function(){
+            const countdown= document.getElementById('countdown');
+          const launchdate= new Date('may 22,2020 0:00:00').getTime();
+          const intvl = setInterval (() => {
+              const now= new Date().getTime();
+              const distance = launchdate - now;
+              const days = Math.floor(distance / (1000 * 60 * 60 *24));
+              const hours = Math.floor((distance % (1000 * 60 * 60 *24))/(1000 * 60 * 60));
+              const mins = Math.floor((distance % (1000 * 60 * 60))/(1000 * 60));
+              const seconds = Math.floor((distance % (1000 * 60))/1000);
+              countdown.innerHTML =  `
+              <div>${days} <span>Days</span></div>
+              <div>${hours} <span>Hours</span></div>
+              <div>${mins} <span>Mins</span></div>
+              <div>${seconds} <span>Seconds</span></div>
+              `;
+              if( distance<0){
+                  clearInterval(intvl);
+                  countdown.style.color ='#17a2b8';
+                  countdown.innerHTML = 'Launched';
+              }
+          },1000)
+         }
+      </script>
+</body>
+</html>
